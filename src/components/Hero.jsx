@@ -5,7 +5,6 @@ const fmt = (n) => new Intl.NumberFormat('es-CO').format(n)
 export default function Hero() {
   return (
     <section style={{ position: 'relative', overflow: 'hidden', background: '#0A1628' }}>
-      {/* Grid bg */}
       <div style={{
         position: 'absolute', inset: 0, pointerEvents: 'none',
         backgroundImage: 'linear-gradient(rgba(21,101,192,0.1) 1px,transparent 1px),linear-gradient(90deg,rgba(21,101,192,0.1) 1px,transparent 1px)',
@@ -53,7 +52,8 @@ export default function Hero() {
             <span style={{ fontSize: '0.8rem', color: '#64748B' }}>COP · pago único</span>
           </div>
 
-          <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', marginBottom: '2.5rem' }}>
+          {/* Botones */}
+          <div style={{ display: 'flex', gap: '0.8rem', flexWrap: 'wrap', marginBottom: '1rem' }}>
             <a className="btn-wa" href={WHATSAPP_URL} target="_blank" rel="noreferrer"
               style={{ fontSize: '1rem', padding: '0.9rem 2rem' }}>
               <i className="ti ti-brand-whatsapp" /> Inscribirme ahora
@@ -64,6 +64,17 @@ export default function Hero() {
               Ver temario <i className="ti ti-arrow-down" />
             </button>
           </div>
+
+          {/* Descarga PDF */}
+          <a href="/assets/temario.pdf" download="Temario_DanExcel.pdf"
+            style={{
+              display: 'inline-flex', alignItems: 'center', gap: '0.4rem',
+              color: '#64748B', fontSize: '0.82rem', textDecoration: 'none',
+              marginBottom: '2rem'
+            }}>
+            <i className="ti ti-download" style={{ fontSize: '0.85rem' }} />
+            Descargar temario completo (PDF)
+          </a>
 
           {/* Stats */}
           <div style={{ display: 'flex', gap: '2rem', flexWrap: 'wrap' }}>
@@ -94,14 +105,6 @@ export default function Hero() {
           />
         </div>
       </div>
-
-      {/* Responsive mobile */}
-      <style>{`
-        @media(max-width:768px){
-          .hero-grid { grid-template-columns: 1fr !important; }
-          .hero-img { display: none; }
-        }
-      `}</style>
     </section>
   )
 }

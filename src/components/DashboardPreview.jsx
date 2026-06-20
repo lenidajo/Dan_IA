@@ -1,99 +1,101 @@
-import { useEffect, useRef } from 'react'
+import { useState } from 'react'
 
-const kpis = [
-  { label: 'Ventas Totales (YTD)', val: '$1.24M', delta: '▲ 18% vs año anterior', color: '#1E88E5' },
-  { label: 'Margen de Beneficio', val: '34.2%', delta: '▲ 2.1pp vs anterior', color: '#22c55e' },
-  { label: 'Clientes Activos', val: '2,847', delta: '▲ 312 nuevos', color: '#1E88E5' },
-  { label: 'Ticket Promedio', val: '$436', delta: '▲ 5% vs anterior', color: '#22c55e' },
+const dashboards = [
+  {
+    img: '/assets/dash1.png',
+    titulo: 'Dashboard de Ventas + KPIs',
+    desc: 'Power Pivot + DAX · KPIs en tiempo real, tendencia mensual y análisis por categoría'
+  },
+  {
+    img: '/assets/dash2.png',
+    titulo: 'Reporte Ejecutivo por Departamento',
+    desc: 'Power Query + DAX · Tendencia mensual, cumplimiento y análisis de bajas por mercado'
+  },
+  {
+    img: '/assets/dash3.png',
+    titulo: 'Dashboard de Inventario con Segmentadores',
+    desc: 'Power Pivot · Segmentación dinámica por producto, bloque y variedad con gráficos interactivos'
+  }
 ]
 
-const meses = ['Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic']
-const vals   = [65,72,58,81,90,76,95,88,102,115,98,124]
-
 export default function DashboardPreview() {
-  const canvasRef = useRef(null)
-
-  useEffect(() => {
-    const canvas = canvasRef.current
-    if (!canvas) return
-    const ctx = canvas.getContext('2d')
-    const max = Math.max(...vals)
-    const W = canvas.width, H = canvas.height
-    const barW = (W - 32) / meses.length - 4
-
-    ctx.clearRect(0, 0, W, H)
-    vals.forEach((v, i) => {
-      const bh = ((v / max) * (H - 24))
-      const x = 16 + i * ((W - 32) / meses.length)
-      const y = H - 20 - bh
-      ctx.fillStyle = '#1565C0'
-      ctx.beginPath()
-      ctx.roundRect(x, y, barW, bh, [3, 3, 0, 0])
-      ctx.fill()
-      ctx.fillStyle = '#475569'
-      ctx.font = '9px Inter, sans-serif'
-      ctx.textAlign = 'center'
-      ctx.fillText(meses[i], x + barW / 2, H - 4)
-    })
-  }, [])
+  const [activo, setActivo] = useState(0)
 
   return (
-    <section style={{ padding: '4rem 2rem' }}>
-      <div className="section-label">Lo que vas a construir</div>
-      <div className="section-title">Dashboards reales, datos reales</div>
-      <div className="section-sub">Al terminar el curso crearás reportes interactivos como este</div>
+    <section style={{ padding: '5rem 2rem', background: '#0D1B2E' }}>
+      <div className="section-label">Proyectos reales del instructor</div>
+      <div className="section-title">Esto es lo que vas a poder crear</div>
+      <div className="section-sub">Dashboards reales construidos con las herramientas del curso</div>
 
-      <div style={{
-        background: '#0F1E35', border: '1px solid rgba(255,255,255,0.1)',
-        borderRadius: 12, overflow: 'hidden', maxWidth: 860, margin: '0 auto'
-      }}>
-        {/* Barra de título */}
+      <div style={{ maxWidth: 960, margin: '0 auto' }}>
+        {/* Imagen principal */}
         <div style={{
-          background: '#0D1B2E', padding: '0.75rem 1.2rem',
-          display: 'flex', alignItems: 'center', gap: 6,
-          borderBottom: '1px solid rgba(255,255,255,0.06)'
+          borderRadius: 12, overflow: 'hidden',
+          border: '1px solid rgba(30,136,229,0.2)',
+          boxShadow: '0 20px 60px rgba(0,0,0,0.5)',
+          marginBottom: '1.2rem', position: 'relative'
         }}>
-          {['#EF4444','#F59E0B','#22C55E'].map(c => (
-            <div key={c} style={{ width: 10, height: 10, borderRadius: '50%', background: c }} />
-          ))}
-          <span style={{ fontSize: '0.75rem', color: '#475569', marginLeft: 6 }}>
-            Dashboard Ventas 2024 — Power Pivot + DAX
-          </span>
-        </div>
-
-        {/* KPIs */}
-        <div style={{ padding: '1.2rem', display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(150px,1fr))', gap: '0.8rem' }}>
-          {kpis.map(k => (
-            <div key={k.label} style={{
-              background: '#0A1628', border: '1px solid rgba(30,136,229,0.2)',
-              borderRadius: 8, padding: '1rem'
-            }}>
-              <div style={{ fontSize: '0.68rem', color: '#64748B', marginBottom: 4 }}>{k.label}</div>
-              <div className="montserrat" style={{ fontSize: '1.4rem', fontWeight: 700, color: k.color }}>{k.val}</div>
-              <div style={{ fontSize: '0.68rem', color: '#22c55e', marginTop: 2 }}>{k.delta}</div>
-            </div>
-          ))}
-        </div>
-
-        {/* Charts */}
-        <div style={{ padding: '0 1.2rem 1.2rem', display: 'grid', gridTemplateColumns: '2fr 1fr', gap: '0.8rem' }}>
-          <div style={{ background: '#0A1628', border: '1px solid rgba(255,255,255,0.06)', borderRadius: 8, padding: '1rem' }}>
-            <div style={{ fontSize: '0.68rem', color: '#64748B', marginBottom: 8 }}>Ventas por Mes 2024</div>
-            <canvas ref={canvasRef} width={480} height={100} style={{ width: '100%', height: 100 }} />
-          </div>
-          <div style={{ background: '#0A1628', border: '1px solid rgba(255,255,255,0.06)', borderRadius: 8, padding: '1rem', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 8 }}>
-            <svg viewBox="0 0 80 80" width={80} height={80}>
-              <circle cx="40" cy="40" r="30" fill="none" stroke="#1565C0" strokeWidth="14" strokeDasharray="75 113" strokeDashoffset="0"/>
-              <circle cx="40" cy="40" r="30" fill="none" stroke="#1E88E5" strokeWidth="14" strokeDasharray="38 113" strokeDashoffset="-75"/>
-              <circle cx="40" cy="40" r="30" fill="none" stroke="#0D47A1" strokeWidth="14" strokeDasharray="25 113" strokeDashoffset="-113"/>
-            </svg>
-            {[['#1565C0','Tecnología 40%'],['#1E88E5','Servicios 34%'],['#0D47A1','Otros 26%']].map(([c, l]) => (
-              <div key={l} style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: '0.68rem', color: '#94A3B8' }}>
-                <div style={{ width: 8, height: 8, borderRadius: '50%', background: c }} />
-                {l}
-              </div>
+          {/* Barra tipo app */}
+          <div style={{
+            background: '#060E1A', padding: '0.6rem 1rem',
+            display: 'flex', alignItems: 'center', gap: 6,
+            borderBottom: '1px solid rgba(255,255,255,0.06)'
+          }}>
+            {['#EF4444','#F59E0B','#22C55E'].map(c => (
+              <div key={c} style={{ width: 10, height: 10, borderRadius: '50%', background: c }} />
             ))}
+            <span style={{ fontSize: '0.72rem', color: '#475569', marginLeft: 8 }}>
+              {dashboards[activo].titulo} · Excel
+            </span>
           </div>
+          <img
+            src={dashboards[activo].img}
+            alt={dashboards[activo].titulo}
+            style={{ width: '100%', display: 'block' }}
+          />
+        </div>
+
+        {/* Descripción activa */}
+        <div style={{
+          textAlign: 'center', marginBottom: '1.5rem',
+          color: '#94A3B8', fontSize: '0.88rem'
+        }}>
+          <span style={{ color: '#1E88E5', fontWeight: 500 }}>{dashboards[activo].titulo}</span>
+          {' · '}{dashboards[activo].desc.split('·')[1]}
+        </div>
+
+        {/* Thumbnails */}
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: '0.8rem' }}>
+          {dashboards.map((d, i) => (
+            <button key={i} onClick={() => setActivo(i)}
+              style={{
+                background: 'transparent', border: `2px solid ${activo === i ? '#1E88E5' : 'rgba(255,255,255,0.07)'}`,
+                borderRadius: 8, overflow: 'hidden', cursor: 'pointer', padding: 0,
+                transition: 'border-color 0.2s', opacity: activo === i ? 1 : 0.5
+              }}>
+              <img src={d.img} alt={d.titulo} style={{ width: '100%', display: 'block' }} />
+            </button>
+          ))}
+        </div>
+
+        {/* Flechas navegación */}
+        <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', marginTop: '1.5rem' }}>
+          <button onClick={() => setActivo(a => (a - 1 + dashboards.length) % dashboards.length)}
+            style={{
+              background: 'rgba(21,101,192,0.15)', border: '1px solid rgba(30,136,229,0.3)',
+              color: '#90CAF9', borderRadius: 8, padding: '0.5rem 1.2rem',
+              cursor: 'pointer', fontSize: '0.85rem', fontFamily: 'Inter'
+            }}>
+            ← Anterior
+          </button>
+          <button onClick={() => setActivo(a => (a + 1) % dashboards.length)}
+            style={{
+              background: 'rgba(21,101,192,0.15)', border: '1px solid rgba(30,136,229,0.3)',
+              color: '#90CAF9', borderRadius: 8, padding: '0.5rem 1.2rem',
+              cursor: 'pointer', fontSize: '0.85rem', fontFamily: 'Inter'
+            }}>
+            Siguiente →
+          </button>
         </div>
       </div>
     </section>

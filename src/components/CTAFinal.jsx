@@ -25,11 +25,23 @@ export default function CTAFinal() {
         Pago único · Acceso inmediato · Sin mensualidades
       </div>
 
-      <a className="btn-wa" href={WHATSAPP_URL} target="_blank" rel="noreferrer"
-        style={{ fontSize: '1.05rem', padding: '1rem 2.5rem' }}>
-        <i className="ti ti-brand-whatsapp" aria-hidden="true" />
-        Inscribirme por WhatsApp
-      </a>
+      <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
+        <a className="btn-wa" href={WHATSAPP_URL} target="_blank" rel="noreferrer"
+          style={{ fontSize: '1.05rem', padding: '1rem 2.5rem' }}>
+          <i className="ti ti-brand-whatsapp" /> Inscribirme por WhatsApp
+        </a>
+
+        <a href="/assets/temario.pdf" download="Temario_DanExcel.pdf"
+          style={{
+            display: 'inline-flex', alignItems: 'center', gap: '0.5rem',
+            background: 'transparent', border: '1px solid rgba(30,136,229,0.4)',
+            color: '#90CAF9', padding: '1rem 2rem', borderRadius: 8,
+            fontSize: '0.95rem', fontFamily: 'Inter', cursor: 'pointer',
+            textDecoration: 'none'
+          }}>
+          <i className="ti ti-download" /> Descargar temario PDF
+        </a>
+      </div>
 
       <p style={{ marginTop: '1rem', color: '#475569', fontSize: '0.8rem' }}>
         Te respondemos en menos de 2 horas
