@@ -53,7 +53,7 @@ export default function Landing() {
         color: '#334155', fontSize: '0.8rem',
         borderTop: '1px solid rgba(255,255,255,0.05)'
       }}>
-        <div>© 2025 <span style={{ color: '#1E88E5' }}>DanExcel</span> · Flores La Conchita · Curso Excel Power</div>
+        <div>© 2026 <span style={{ color: '#1E88E5' }}>DanExcel</span> · Flores La Conchita · Curso Excel Power</div>
         <div style={{ marginTop: '0.4rem' }}>
           Dudas:{' '}
           <a href={WHATSAPP_URL} target="_blank" rel="noreferrer" style={{ color: '#25D366' }}>

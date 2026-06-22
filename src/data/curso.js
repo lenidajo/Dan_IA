@@ -3,6 +3,8 @@ export const WHATSAPP_URL =
 
 export const PRECIO = { actual: 149000, anterior: 280000 };
 
+export const LEMA = "Aprender, implementar y mejorar.";
+
 export const modulos = [
   {
     id: 1,
@@ -64,14 +66,14 @@ export const modulos = [
   },
   {
     id: 6,
-    titulo: "Minería de Datos y Big Data con Excel: Aplicaciones Prácticas",
-    objetivo: "Aplicar Excel avanzado en minería de datos, pronósticos e integración con Big Data.",
-    temas: ["Análisis de Tendencias y Pronósticos (PRONOSTICO.ETS)", "Identificación de Patrones y Anomalías", "Conectando Excel a SQL Server, Azure SQL y Data Lakes"],
-    tags: ["Minería de datos", "Pronósticos", "SQL Server", "Azure"],
+    titulo: "Proyecto Final: Minería, Modelamiento y Visualización de Datos",
+    objetivo: "Aplicar todo lo aprendido en un proyecto real: minería de datos, modelamiento avanzado y dashboard profesional listo para presentar.",
+    temas: ["Minería de datos aplicada: patrones, tendencias y pronósticos reales", "Modelamiento de datos: diseño estrella y relaciones avanzadas en Power Pivot", "Visualización profesional: dashboard interactivo completo con DAX y segmentadores"],
+    tags: ["Proyecto real", "Minería de datos", "Modelamiento", "Dashboard final"],
     clases: [
-      { id: "M06E01", titulo: "Minería de datos y pronósticos con Excel", duracion: "65 min", videoId: null },
-      { id: "M06E02", titulo: "Anomalías y patrones con Power Pivot + DAX", duracion: "55 min", videoId: null },
-      { id: "M06E03", titulo: "Excel conectado a Big Data: SQL, Azure, Data Lake", duracion: "60 min", videoId: null },
+      { id: "M06E01", titulo: "Minería aplicada: patrones y pronósticos con datos reales", duracion: "65 min", videoId: null },
+      { id: "M06E02", titulo: "Modelamiento avanzado: esquema estrella en Power Pivot", duracion: "55 min", videoId: null },
+      { id: "M06E03", titulo: "Dashboard final: visualización completa e interactiva", duracion: "60 min", videoId: null },
     ],
   },
 ];

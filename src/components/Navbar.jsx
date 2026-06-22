@@ -14,10 +14,9 @@ export default function Navbar() {
         Dan<span style={{ color: '#1E88E5' }}>Excel</span>
       </Link>
 
-      <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
-        <Link to="/clases" style={{ fontSize: '0.85rem', color: '#94A3B8' }}>
-          Mis Clases
-        </Link>
+      <div style={{ display: 'flex', gap: '1.2rem', alignItems: 'center' }}>
+        <Link to="/clases" style={{ fontSize: '0.85rem', color: '#94A3B8' }}>Mis Clases</Link>
+        <Link to="/certificado" style={{ fontSize: '0.85rem', color: '#94A3B8' }}>Certificado</Link>
         <a className="btn-wa" href={WHATSAPP_URL} target="_blank" rel="noreferrer"
           style={{ padding: '0.45rem 1.1rem', fontSize: '0.82rem' }}>
           <i className="ti ti-brand-whatsapp" aria-hidden="true" />
