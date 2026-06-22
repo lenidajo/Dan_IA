@@ -1,7 +1,7 @@
 export const WHATSAPP_URL =
   "https://wa.me/573209373528?text=Hola%2C%20quiero%20m%C3%A1s%20informaci%C3%B3n%20del%20curso%20de%20Excel%20con%20DanExcel";
 
-export const PRECIO = { actual: 97000, anterior: 180000 };
+export const PRECIO = { actual: 149000, anterior: 280000 };
 
 export const modulos = [
   {
